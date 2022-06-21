@@ -6,11 +6,33 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'https://cdn.datatables.net/s/dt/dt-1.10.10,r-2.0.0/datatables.min.css' %>
+
+    <%= javascript_include_tag 'https://code.jquery.com/jquery-1.12.0.min.js' %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' %>
+    <%= javascript_include_tag 'https://cdn.datatables.net/s/dt/dt-1.10.10,r-2.0.0/datatables.min.js' %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+  <p>
+    <% if current_user %>
+      Logged in as <%= current_user.email %>.
+      <%= link_to "Edit Profile", edit_user_path(current_user.id) %> or
+      <%= link_to "Logout", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign Up", signup_path %> or
+      <%= link_to "Log In", login_path %>
+    <% end %>
+  </p>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+
+  <%= yield %>
   </body>
 </html>

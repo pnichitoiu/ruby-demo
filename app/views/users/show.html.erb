@@ -1,0 +1,16 @@
+<h1>Hi, <%= @user.first_name %> <%= @user.last_name %></h1>
+<p>Email: <%= @user.email %></p>
+<p>Phone Number: <%= @user.phone_number %></p>
+
+<h2>Address:</h2>
+<%#= render @user.addresses %>
+
+<ul>
+  <% @user.addresses.each do |address| %>
+    <li> <%= address.street %></li>
+    <br />
+  <% end %>
+</ul>
+
+<h2>Add an address:</h2>
+<%#= render 'addresses/form' %>
