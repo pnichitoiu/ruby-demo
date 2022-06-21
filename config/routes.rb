@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :home
   namespace :admin do
       resources :categories
       resources :products
