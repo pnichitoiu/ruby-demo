@@ -2,15 +2,27 @@
 <p>Email: <%= @user.email %></p>
 <p>Phone Number: <%= @user.phone_number %></p>
 
-<h2>Address:</h2>
-<%#= render @user.addresses %>
 
+<button class="btn btn-dark btn-authenticate-navbar"><%= link_to "Edit Profile", edit_user_path(current_user.id) %></button>
+
+
+<h2>Addresses:</h2>
 <ul>
   <% @user.addresses.each do |address| %>
-    <li> <%= address.street %></li>
+    <p> <strong>Address:</strong> <%= address.street %>, <%= address.city %> , <%= address.country %>, <%= address.zip %> </p>
+    <p> <strong>Customer Name: </strong> <%= address.last_name%> <%= address.first_name %> </p>
+    <ul>
+      <%= button_to "Delete Address", {:controller => :addresses,
+        :action => 'destroy', :id => address.id }, :method => :delete %>
+    </ul>
     <br />
   <% end %>
 </ul>
 
 <h2>Add an address:</h2>
-<%#= render 'addresses/form' %>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<!--  <p><%#= "flash_#{name}" %></p>-->
+<% end %>
+
+<%= render 'addresses/form' %>

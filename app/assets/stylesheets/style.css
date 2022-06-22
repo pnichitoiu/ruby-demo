@@ -11286,3 +11286,17 @@ textarea.form-control-lg {
         display: none !important;
     }
 }
+.authenticate-navbar{
+    list-style: none;
+}
+.authenticate-navbar-buttons{
+    display: inline-flex;
+}
+.btn-authenticate-navbar{
+    margin-right: 5px;
+}
+.btn-authenticate-navbar a{
+    color: white;
+    text-decoration: none;
+    font-size: 10pt;
+}

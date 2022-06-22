@@ -1,15 +1,26 @@
 class AddressesController < ApplicationController
   def create
-    @user = User.find(params[:users_is])
-    @address = @user.addresses.create(address_params)
-    redirect_to user_path(@user)
+    # @user = User.find(@current_user)
+    @address = Address.new(address_params)
+    @address.users_id = current_user.id
+    respond_to do |format|
+      if @address.save
+        format.html { redirect_to user_path(current_user.id), notice: 'Address added.' }
+      else
+        format.html { redirect_to user_path(current_user.id), alert: @address.errors }
+      end
+    end
+  end
+
+  def new
+    @user = User.find(current_user.id)
+    @address = @user.addresses.build
   end
 
   def destroy
-    @user = User.find(params[:users_id])
-    @address = @user.addresses.find(params[:id])
+    @address = Address.find(params[:id])
     @address.destroy
-    redirect_to user_path(@user), status: 303
+    redirect_to user_path(@address.users_id), status: 303
   end
 
   def user_addresses
@@ -18,6 +29,6 @@ class AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:last_name, :first_name, :address, :zip, :city, :country)
+    params.require(:address).permit(:last_name, :first_name, :street, :zip, :city, :country)
   end
 end
