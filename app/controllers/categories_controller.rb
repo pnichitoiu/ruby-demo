@@ -4,4 +4,8 @@ class CategoriesController < ApplicationController
     @category = Category.find(category_id)
     @tree_data = helpers.tree_data
   end
+
+  def index
+    @products = Product.all
+  end
 end

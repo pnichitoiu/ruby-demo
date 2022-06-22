@@ -79,6 +79,6 @@ class ProductDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
    def display_resource(product)
-     "#{product.id}--#{product.name}"
+     "#{product.name} (##{product.id})"
    end
 end

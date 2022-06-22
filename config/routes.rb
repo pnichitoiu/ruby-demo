@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get '/categories/:id', to: 'categories#show'
+  get '/categories', to: 'categories#index'
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: 'application#home'
+  root to: 'home#show'
 
   get "signup", to: "users#new"
   get "login", to: "sessions#new"
