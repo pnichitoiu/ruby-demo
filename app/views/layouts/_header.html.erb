@@ -56,6 +56,20 @@
           <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
         </button>
       </form>
+      <ul class="authenticate-navbar">
+        <% if current_user %>
+          <li><h4><b><%= "#{current_user.first_name} #{current_user.last_name}" %></b></h4></li>
+          <li class="authenticate-navbar-buttons">
+            <button class="btn btn-dark btn-authenticate-navbar"><%= link_to "Profile", user_path(current_user.id) %></button>
+            <button class="btn btn-dark btn-authenticate-navbar"><%= link_to "Logout", logout_path, method: :delete %></button>
+          </li>
+        <% else %>
+          <li class="authenticate-navbar-buttons">
+            <button class="btn btn-dark btn-authenticate-navbar"><%= link_to "Sign Up", signup_path %></button>
+            <button class="btn btn-dark btn-authenticate-navbar"><%= link_to "Log In", login_path %></button>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>

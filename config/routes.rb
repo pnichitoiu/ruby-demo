@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   get "logout", to: "sessions#destroy"
   resources :users, except: [:new]
   resources :addresses
+  delete '/addresses/:id' => 'addresses#destroy'
 end
