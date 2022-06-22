@@ -15,15 +15,17 @@
  */
 
 #flash_alert {
-    border: 1px solid #000066;
     padding: 4px;
-    margin-bottom: 10px;
-    background-color: #cc3333;
+    background-color: #c43f3f;
+    color: white;
+    width: 600px;
+    margin: 20px auto;
 }
 
 #flash_notice {
-    border: 1px solid #000066;
     padding: 4px;
-    margin-bottom: 10px;
-    background-color: #A3B15A;
+    background-color: #87b15a;
+    color:black;
+    width: 600px;
+    margin: 20px auto;
 }

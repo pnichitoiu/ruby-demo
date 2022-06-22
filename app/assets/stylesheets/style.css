@@ -11295,8 +11295,34 @@ textarea.form-control-lg {
 .btn-authenticate-navbar{
     margin-right: 5px;
 }
-.btn-authenticate-navbar a{
+.btn-authenticate-navbar a, .btn-authenticate-navbar input {
     color: white;
     text-decoration: none;
     font-size: 10pt;
+    background-color: transparent;
+    border: none;
+}
+.form-authenticate{
+    display:block;
+    width: 400px;
+    margin: 20px auto;
+}
+.form-authenticate-redirect{
+    font-size: 10pt;
+}
+.form-authenticate-redirect a{
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+.profile-title-edit{
+    display: inline-flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.profile-title-edit button{
+    margin-left: 10px;
+}
+.profile-add-address{
+    margin-top: 20px;
 }
