@@ -1,7 +1,11 @@
-<h1>Sign Up</h1>
+<div class="container-fluid authenticate-container">
+  <h1 align="center">Sign Up</h1>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<% end %>
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info" id="flash_<%= type %>">
+      <%= msg %>
+    </div>
+  <% end %>
 
-<%= render "form", article: @user %>
+  <%= render "form", article: @user %>
+</div>

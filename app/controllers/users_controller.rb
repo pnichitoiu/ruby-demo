@@ -11,11 +11,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      flash[:notice] = "User created."
-      redirect_to @user
-    else
-      render "new"
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to login_path, notice: 'User created.' }
+      else
+        format.html { redirect_to signup_path, alert: @user.errors }
+      end
     end
   end
 
@@ -48,6 +49,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :last_name, :first_name, :phone_number)
+    params.require(:user).permit(:email, :password, :last_name, :first_name, :phone_number, :password_confirmation)
   end
 end

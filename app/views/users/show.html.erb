@@ -1,28 +1,82 @@
-<h1>Hi, <%= @user.first_name %> <%= @user.last_name %></h1>
-<p>Email: <%= @user.email %></p>
-<p>Phone Number: <%= @user.phone_number %></p>
+<div class="container">
+  <h1 align="center">User Profile</h1>
 
+  <div class="row">
+    <div class="profile-data col-6">
+      <div class="profile-title-edit">
+        <h2>Hi, <%= @user.first_name %> <%= @user.last_name %></h2>
+        <button class="btn btn-dark btn-authenticate-navbar"><%= link_to "Edit Personal Data", edit_user_path(current_user.id) %></button>
+      </div>
 
-<button class="btn btn-dark btn-authenticate-navbar"><%= link_to "Edit Profile", edit_user_path(current_user.id) %></button>
+      <div class="row">
+          <div class="col-sm-3 col-md-2 col-5">
+            <label style="font-weight:bold;">First Name</label>
+          </div>
+          <div class="col-md-8 col-6">
+            <%= @user.first_name %>
+          </div>
+      </div>
+      <hr />
 
+      <div class="row">
+        <div class="col-sm-3 col-md-2 col-5">
+          <label style="font-weight:bold;">Last Name</label>
+        </div>
+        <div class="col-md-8 col-6">
+          <%= @user.last_name %>
+        </div>
+      </div>
+      <hr />
 
-<h2>Addresses:</h2>
-<ul>
-  <% @user.addresses.each do |address| %>
-    <p> <strong>Address:</strong> <%= address.street %>, <%= address.city %> , <%= address.country %>, <%= address.zip %> </p>
-    <p> <strong>Customer Name: </strong> <%= address.last_name%> <%= address.first_name %> </p>
-    <ul>
-      <%= button_to "Delete Address", {:controller => :addresses,
-        :action => 'destroy', :id => address.id }, :method => :delete %>
-    </ul>
-    <br />
-  <% end %>
-</ul>
+      <div class="row">
+        <div class="col-sm-3 col-md-2 col-5">
+          <label style="font-weight:bold;">Email Address</label>
+        </div>
+        <div class="col-md-8 col-6">
+          <%= @user.email %>
+        </div>
+      </div>
+      <hr />
 
-<h2>Add an address:</h2>
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
-<!--  <p><%#= "flash_#{name}" %></p>-->
-<% end %>
+      <div class="row">
+        <div class="col-sm-3 col-md-2 col-5">
+          <label style="font-weight:bold;">Phone Number</label>
+        </div>
+        <div class="col-md-8 col-6">
+          <%= @user.phone_number %>
+        </div>
+      </div>
+    </div>
 
-<%= render 'addresses/form' %>
+    <div class="profile-addresses col-6">
+
+      <div class="profile-title-edit">
+        <h2>My Addresses</h2>
+      </div>
+
+      <% @user.addresses.each do |address| %>
+        <div class="row">
+          <div class="col-5">
+            <strong>Customer Name: </strong> <%= address.last_name%> <%= address.first_name %>
+          </div>
+          <div class="col-5">
+            <p> <strong>Address:</strong> <%= address.street %>, <%= address.city %> , <%= address.country %>, <%= address.zip %> </p>
+          </div>
+          <div class="col-2">
+            <%= button_to "Delete Address", {:controller => :addresses, :action => 'destroy', :id => address.id }, :method => :delete %>
+          </div>
+        </div>
+        <hr />
+      <% end %>
+    </div>
+  </div>
+
+  <div class="profile-add-address">
+    <h2 align="center">Add new address:</h2>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+
+    <%= render 'addresses/form' %>
+  </div>
+</div>
