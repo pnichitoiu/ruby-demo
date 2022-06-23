@@ -31,6 +31,8 @@ class ProductDashboard < Administrate::BaseDashboard
     name
     sku
     image
+    price
+    categories
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'home#show'
 
+  get "about", to: "home#about"
   get "signup", to: "users#new"
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
