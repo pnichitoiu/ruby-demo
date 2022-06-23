@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_06_21_062025) do
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_062025) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,14 +33,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_062025) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "active_storage_variant_records", force: :cascade do |t|
+  create_table "active_storage_variant_records", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer "users_id", null: false
+  create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "users_id", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "zip"
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_062025) do
     t.index ["users_id"], name: "index_addresses_on_users_id"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "url_key"
@@ -62,26 +62,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_062025) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "category_products", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "product_id", null: false
+  create_table "category_products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "product_id", null: false
     t.integer "position"
     t.index ["category_id"], name: "index_category_products_on_category_id"
     t.index ["product_id"], name: "index_category_products_on_product_id"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "sku"
     t.string "url_key"
-    t.decimal "price"
+    t.decimal "price", precision: 10
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email"
     t.string "first_name"
     t.string "last_name"
