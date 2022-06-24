@@ -23,4 +23,10 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
   resources :addresses
   delete '/addresses/:id' => 'addresses#destroy'
+
+
+  # process error pages
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server'
+  get '/422', to: 'errors#unprocessable'
 end
