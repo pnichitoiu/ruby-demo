@@ -50,6 +50,8 @@ test:
 #
 production:
   <<: *default
-  database: ruby_demo_production
-  username: ruby_demo
-  password: <%= ENV["RUBY_DEMO_DATABASE_PASSWORD"] %>
+  database: <%= ENV["MYSQL_PRODUCTION_DATABASE"] %>
+  username: <%= ENV["MYSQL_PRODUCTION_USERNAME"] %>
+  password: <%= ENV["MYSQL_PRODUCTION_PASSWORD"] %>
+  host: <%= ENV["MYSQL_PRODUCTION_HOST"] %>
+  port: <%= ENV["MYSQL_PRODUCTION_PORT"] %>
