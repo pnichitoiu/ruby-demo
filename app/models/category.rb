@@ -10,7 +10,7 @@ class Category < ApplicationRecord
   validates :description, presence: true
   validates :url_key, uniqueness: true
 
-  has_many :category_products
+  has_many :category_products, dependent: :destroy
   has_many :products, through: :category_products
 
   has_many :children, class_name: "Category", foreign_key: "parent_id"

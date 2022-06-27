@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   validates :sku, presence: true, uniqueness: true
   validates :url_key, uniqueness: true
   validates :price, numericality: { greater_than: 0 }
-  has_many :category_products
+
+  has_many :category_products, dependent: :destroy
   has_many :categories, through: :category_products
 end
