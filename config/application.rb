@@ -19,5 +19,10 @@ module RubyDemo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #
+    #
+    config.address = '123 Street, New York, US'
+    config.working_hours = 'Mon - Fri : 09.00 AM - 09.00 PM'
+    config.telephone = '+012 345 6789'
   end
 end
