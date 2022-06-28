@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        ConfirmationMailer.with(user: @user).user_created.deliver_now
         format.html { redirect_to login_path, notice: 'User created.' }
       else
         format.html { redirect_to signup_path, alert: @user.errors }
@@ -45,6 +46,17 @@ class UsersController < ApplicationController
     @user.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  def forgot_password
+    user = User.find_by(email: params[:session][:email].downcase)
+    respond_to do |format|
+      if user
+        format.html { redirect_to forgot_password_path, notice: "Check you email!"}
+      else
+        format.html { redirect_to forgot_password_path, alert: "Your email is incorrect!" }
+      end
+    end
   end
 
   private

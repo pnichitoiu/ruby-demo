@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get "about", to: "home#about"
   get "signup", to: "users#new"
   get "login", to: "sessions#new"
+  get "forgot_password", to: "sessions#forgot_password"
+  post "forgot_password", to: "users#forgot_password"
   post "login", to: "sessions#create"
   get "logout", to: "sessions#destroy"
   resources :users, except: [:new]
