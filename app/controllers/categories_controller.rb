@@ -1,10 +1,11 @@
 class CategoriesController < ApplicationController
   def show
-    category_id = helpers.resolve_category_id(params[:id])
-    @category = Category.find(category_id)
-    @tree_data = helpers.tree_data
+    begin
+      @category = Category.find( helpers.resolve_category_id(params[:id]))
+    rescue ActiveRecord::RecordNotFound
+      render 'errors/not_found', status: :not_found
+    end
   end
-
   def index
     @products = Product.all
   end

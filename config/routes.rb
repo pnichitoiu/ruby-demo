@@ -28,4 +28,9 @@ Rails.application.routes.draw do
   post '/password/reset', to: 'password_resets#create'
   get '/password/reset/edit', to: 'password_resets#edit'
   patch '/password/reset/edit', to: 'password_resets#update'
+
+  # process error pages
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server'
+  get '/422', to: 'errors#unprocessable'
 end
