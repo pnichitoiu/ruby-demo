@@ -89,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_21_062025) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

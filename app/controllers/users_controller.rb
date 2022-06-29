@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        ConfirmationMailer.with(user: @user).user_created.deliver_now
         format.html { redirect_to login_path, notice: 'User created.' }
       else
         format.html { redirect_to signup_path, alert: @user.errors }
