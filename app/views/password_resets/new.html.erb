@@ -1,0 +1,20 @@
+<div class="container-fluid authenticate-container">
+  <h1 align="center">Forgot Password?</h1>
+
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info" id="flash_<%= type %>">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <%= form_with url: password_reset_path , class: "form-authenticate" do |form| %>
+    <p class="text-center form-authenticate-redirect">You will receive the instructions on how to reset your password.</p>
+    <div class="form-group">
+      <%= form.text_field :email, class: "form-control", placeholder: 'Email Address' %>
+    </div>
+
+    <div class="form-group text-center">
+      <button class="btn btn-dark btn-authenticate-navbar"><%= form.submit "Reset Password" %></button>
+    </div>
+  <% end %>
+</div>

@@ -48,17 +48,6 @@ class UsersController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
-  def forgot_password
-    user = User.find_by(email: params[:session][:email].downcase)
-    respond_to do |format|
-      if user
-        format.html { redirect_to forgot_password_path, notice: "Check you email!"}
-      else
-        format.html { redirect_to forgot_password_path, alert: "Your email is incorrect!" }
-      end
-    end
-  end
-
   private
   def user_params
     params.require(:user).permit(:email, :password, :last_name, :first_name, :phone_number, :password_confirmation)

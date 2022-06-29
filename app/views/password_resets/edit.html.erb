@@ -1,5 +1,5 @@
 <div class="container-fluid authenticate-container">
-  <h1 align="center">Forgot Password?</h1>
+  <h1 align="center">Reset your Password</h1>
 
   <% flash.each do |type, msg| %>
     <div class="alert alert-info" id="flash_<%= type %>">
@@ -7,10 +7,13 @@
     </div>
   <% end %>
 
-  <%= form_with(scope: :session, url: forgot_password_path, class: "form-authenticate") do |form| %>
+  <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]), class: "form-authenticate" do |form| %>
     <p class="text-center form-authenticate-redirect">You will receive the instructions on how to reset your password.</p>
     <div class="form-group">
-      <%= form.text_field :email, class: "form-control", placeholder: 'Email Address' %>
+      <%= form.password_field :password, class: "form-control", placeholder: 'Password' %>
+    </div>
+    <div class="form-group">
+      <%= form.password_field :password_confirmation, class: "form-control", placeholder: 'Password Confirmation' %>
     </div>
 
     <div class="form-group text-center">
