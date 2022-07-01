@@ -16,4 +16,13 @@ class Category < ApplicationRecord
   has_many :children, class_name: "Category", foreign_key: "parent_id"
   belongs_to :parent, class_name: "Category", optional: true
 
+  before_validation :url_key_uniq
+  protected
+  def url_key_uniq
+    if self.url_key.empty?
+      self.url_key = name.downcase.gsub(/[^a-zA-z0-9\-]/, '-')
+      end
+    end
+
+
 end

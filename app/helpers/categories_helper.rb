@@ -4,7 +4,7 @@ module CategoriesHelper
     Category.roots.each do |category|
       output << data(category)
     end
-    output.to_json
+    output
   end
 
   def resolve_category_id(arg)
@@ -21,6 +21,6 @@ module CategoriesHelper
         children << data(cat)
       end
     end
-    {name: category.name, children: children}
+    {name: category.name, url_key: category.url_key, children: children}
   end
 end
