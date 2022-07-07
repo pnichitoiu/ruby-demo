@@ -24,5 +24,6 @@ module RubyDemo
     config.address = '123 Street, New York, US'
     config.working_hours = 'Mon - Fri : 09.00 AM - 09.00 PM'
     config.telephone = '+012 345 6789'
+    config.active_storage.web_image_content_types = %w(image/jpeg image/png image/webp image/jpg)
   end
 end

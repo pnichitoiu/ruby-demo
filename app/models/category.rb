@@ -17,6 +17,7 @@ class Category < ApplicationRecord
   belongs_to :parent, class_name: "Category", optional: true
 
   before_validation :url_key_uniq
+
   protected
   def url_key_uniq
     if self.url_key.empty?

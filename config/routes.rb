@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   patch '/password/reset/edit', to: 'password_resets#update'
 
   # process error pages
-  get '/404', to: 'errors#not_found'
-  get '/500', to: 'errors#internal_server'
-  get '/422', to: 'errors#unprocessable'
+  #get '/404', to: 'errors#not_found'
+  #get '/500', to: 'errors#internal_server'
+  #get '/422', to: 'errors#unprocessable'
 end
