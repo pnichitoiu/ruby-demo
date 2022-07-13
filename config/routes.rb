@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'products/show'
   resources :home
   namespace :admin do
       resources :categories
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get '/categories/:id', to: 'categories#show'
+  get '/products/:id', to: 'products#show'
   get '/categories', to: 'categories#index'
   # Defines the root path route ("/")
   # root "articles#index"
